@@ -13,5 +13,14 @@
     &#10093; <input autofocus autocomplete="off" placeholder="Send a message"/>
     </form>
     <script src="chat.js" charset="utf-8"></script>
+    <script src="fichierMQTT.js"></script>
+    <script type="text/javascript">
+      var clientMQTT = mqtt.connect('mqtt://localhost:8080')
+      clientMQTT.subscribe("value/#")
+
+      clientMQTT.on("message", function (topic, message) {
+      console.log(message.toString());
+      })
+    </script>
   </body>
 </html>
